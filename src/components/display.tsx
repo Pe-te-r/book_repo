@@ -58,8 +58,8 @@ const Display: React.FC<DisplayProps> = ({ books, handleDeleteBook, handleEditBo
                     </tr>
                 </thead>
                 <tbody>
-                    {books.map((book) => (
-                        <tr key={book.id}>
+                    {books.map((book,index) => (
+                        <tr key={index}>
                             {editingBookId === book.id ? (
                                 <>
                                     <td>
