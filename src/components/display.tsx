@@ -1,53 +1,3 @@
-// // import React, { useState } from 'react'
-// import './stylings/display.scss'
-
-// type Book = {
-//     id: number,
-//     title: string,
-//     author: string,
-//     year: string
-// };
-
-// type DisplayProps = {
-//     books: Book[],
-//     handleDeleteBook: any
-//     handleEditBook: any
-// };
-
-// const Display: React.FC<DisplayProps>=({books,handleDeleteBook,handleEditBook})=>{
-//     return(
-//     <div className='dispaly'>
-//         <table>
-//                 <thead>
-//                     <tr>
-//                         <th>Title</th>
-//                         <th>Author</th>
-//                         <th>Year</th>
-//                         <th>Action</th>
-//                     </tr>
-//                 </thead>
-//                 <tbody>
-//                     {books.map((book, index) => (
-//                         <tr key={index}>
-//                             <td>{book.title}</td>
-//                             <td>{book.author}</td>
-//                             <td>{book.year}</td>
-//                             <td className='btns'>
-//                                 <button className="edit-button" onClick={handleEditBook}>Edit</button>
-//                                 <button className="delete-button" onClick={()=>handleDeleteBook(book.id)}>Delete</button>
-//                             </td>
-//                         </tr>
-//                     ))}
-//                 </tbody>
-//             </table>
-       
-//     </div>
-//     )
-// }
-
-// export default Display
-
-
 import React, { useState } from 'react';
 import './stylings/display.scss';
 
@@ -75,9 +25,7 @@ const Display: React.FC<DisplayProps> = ({ books, handleDeleteBook, handleEditBo
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if(editedBook){
-            const { name, value } = e.target;
-            console.log(name, value);
-            
+            const { name, value } = e.target;            
             setEditedBook({...editedBook, [name]: value });
         }
         
@@ -87,7 +35,6 @@ const Display: React.FC<DisplayProps> = ({ books, handleDeleteBook, handleEditBo
     const handleEditSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (editedBook) {
-            console.log(editedBook)
             handleEditBook(editedBook);
             setEditingBookId(null);
             setEditedBook(null);
