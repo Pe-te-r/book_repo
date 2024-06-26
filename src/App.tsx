@@ -5,6 +5,7 @@ import Form from './components/form'
 import { Book, ActionType } from './components/types/types';
 import bookReducer from './components/managements/managaement';
 import UseLocalStorage from './custom_hook/customHook';
+import axiosInstance from './api/api';
 
 
 const books: Book[]=[
@@ -86,6 +87,24 @@ function App() {
   const handleEditBook = (book: Book) => {
     dispatch({ type: ActionType.EDIT_BOOK, payload: book });
   };
+
+  useEffect(() => {
+    const fetchBooks = async () => {
+      try {
+        const response = await axiosInstance.get('/books');
+        console.log(response);
+        const fetchedBooks = response.data;
+        // Dispatch an action to update the state with fetched books
+        fetchedBooks.forEach((book: Book) => {
+          dispatch({ type: ActionType.ADD_BOOK, payload: book });
+        });
+      } catch (error) {
+        console.error('Error fetching books:', error);
+      }
+    };
+
+    fetchBooks();
+  }, []);
 
   return (
     <div className='app'>
