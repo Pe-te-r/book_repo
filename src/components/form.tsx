@@ -26,6 +26,9 @@ const Form: React.FC<propsTypes>=({handleAddBook,length})=>{
                 year:year
             }
             handleAddBook(newBook)
+            titleRef.current.value=''
+            authorRef.current.value=''
+            yearRef.current.value=''
         }
 
     }
