@@ -14,7 +14,7 @@ const books: Book[]=[]
 
 
 function App() {
-  const [storedBooks, setStoredBooks,clearStorage] = UseLocalStorage('books', books);
+  const [storedBooks, setStoredBooks] = UseLocalStorage('books', books);
   const [booksArray, dispatch] = useReducer(bookReducer,storedBooks);
 
   useEffect(() => {
@@ -23,12 +23,12 @@ function App() {
 
 
   const handleAddBook =async (book: Book) => {
-    dispatch({ type: ActionType.ADD_BOOK, payload: book });
     try {
       const book_exists = booksArray.find(book=>book.id === Number(book))
       if(book_exists){
         alert('Book already exists')
-      }
+        }
+      dispatch({ type: ActionType.ADD_BOOK, payload: book });
       await axiosInstance.post('/books', book);
     } catch (error) {
       console.error('Error adding book:', error);
@@ -54,7 +54,7 @@ function App() {
   };
 
   useEffect(() => {
-    fetchBooks(dispatch,storedBooks,clearStorage);
+    fetchBooks(dispatch,storedBooks);
   }, []);
 
   return (
