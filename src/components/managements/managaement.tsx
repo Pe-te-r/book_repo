@@ -10,8 +10,14 @@ import { Book, ActionType} from "../types/types"
     type: ActionType.DELETE_BOOK,
     payload: { id: number }
   }
+
+  type EditBookAction = {
+    type: ActionType.EDIT_BOOK,
+    payload: Book
+  }
   
-  type Action = AddBookAction | DeleteBookAction
+  
+  type Action = AddBookAction | DeleteBookAction | EditBookAction
   
 const bookReducer = (state: Book[], action: Action): Book[] => {
     switch (action.type) {

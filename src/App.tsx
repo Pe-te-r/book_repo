@@ -76,10 +76,14 @@ function App() {
     dispatch({ type: ActionType.DELETE_BOOK, payload: { id } });
   };
 
+  const handleEditBook = (book: Book) => {
+    dispatch({ type: ActionType.EDIT_BOOK, payload: book });
+  };
+
   return (
     <div className='app'>
       <Form handleAddBook={handleAddBook} length={booksArray.length}/>
-      <Display books={booksArray} handleDeleteBook={handleDeleteBook}/>
+      <Display books={booksArray} handleDeleteBook={handleDeleteBook} handleEditBook={handleEditBook}/>
     </div>
   )
 }
