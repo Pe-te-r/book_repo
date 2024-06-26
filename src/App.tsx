@@ -28,8 +28,8 @@ function App() {
       if(book_exists){
         alert('Book already exists')
         }
-      dispatch({ type: ActionType.ADD_BOOK, payload: book });
-      await axiosInstance.post('/books', book);
+        dispatch({ type: ActionType.ADD_BOOK, payload: book });
+        await axiosInstance.post('/books', book);
     } catch (error) {
       console.error('Error adding book:', error);
     }

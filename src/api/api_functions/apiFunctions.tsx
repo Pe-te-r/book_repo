@@ -15,7 +15,6 @@ export const fetchBooks = async (dispatch: any,storedBooks: any) => {
         dispatch({ type: ActionType.ADD_BOOK, payload: book });
       });
 
- 
     } catch (error) {
       console.error('Error fetching books:', error);
     }
