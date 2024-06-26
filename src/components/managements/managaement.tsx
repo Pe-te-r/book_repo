@@ -25,6 +25,10 @@ const bookReducer = (state: Book[], action: Action): Book[] => {
         return [...state, action.payload];
       case ActionType.DELETE_BOOK:
         return state.filter(book => book.id !== action.payload.id);
+      case ActionType.EDIT_BOOK:
+        return state.map(book =>
+          book.id === action.payload.id? action.payload : book
+        );
       default:
         return state;
     }

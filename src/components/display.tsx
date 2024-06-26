@@ -117,6 +117,7 @@ const Display: React.FC<DisplayProps> = ({ books, handleDeleteBook, handleEditBo
                                 <>
                                     <td>
                                         <input
+                                            className='input'
                                             type="text"
                                             name="title"
                                             value={editedBook?.title || ''}
@@ -125,6 +126,7 @@ const Display: React.FC<DisplayProps> = ({ books, handleDeleteBook, handleEditBo
                                     </td>
                                     <td>
                                         <input
+                                            className='input'
                                             type="text"
                                             name="author"
                                             value={editedBook?.author || ''}
@@ -133,6 +135,7 @@ const Display: React.FC<DisplayProps> = ({ books, handleDeleteBook, handleEditBo
                                     </td>
                                     <td>
                                         <input
+                                            className='input'
                                             type="text"
                                             name="year"
                                             value={editedBook?.year || ''}
