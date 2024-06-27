@@ -20,7 +20,20 @@ const UseLocalStorage =(key: any,initialValue: any)=>{
             console.error(error)            
         }
     }
+
+  
     return [storedValue,setValue]
 }
 
-export default UseLocalStorage
+export   const clearStorage = () => {
+    try {
+        console.log("Clearing storage...")
+        window.localStorage.clear();
+        console.log("Storage cleared!")
+    } catch (error) {
+        console.error(`Error clearing  error`);
+    }
+};
+
+
+export default UseLocalStorage 
